@@ -1,0 +1,20 @@
+.button {
+	padding: 12px 34px;
+	border-radius: 8px;
+	border: 2px solid #D3A265;
+	color: #161616;
+	font-family: 'Gilroy', sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 24px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	text-align: center;
+	background: transparent;
+}
+
+.button:hover {
+	background-color: #e4d9d9;
+	transition: all 0.5s;
+}

@@ -1,0 +1,269 @@
+.header {
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+
+	.header__container {
+		display: flex;
+		align-items: center;
+		height: 101px;
+		transition: height 0.5s ease-in-out;
+
+		.header_logo {
+			.header_logo_link {
+				.header_logo_img {}
+			}
+
+			margin-right: 68px;
+		}
+
+		.body_menu {
+			flex: 1 1 auto;
+
+			.header_menu {
+
+
+				.header_menu_list {
+					display: flex;
+					gap: 48.5px;
+
+					.header_menu_item {
+						color: #352C2C;
+						font-family: 'Gilroy', sans-serif;
+						font-style: normal;
+						font-weight: 500;
+						line-height: normal;
+						position: relative;
+
+
+						/* Переходы */
+						transition: background-color 0.6s ease;
+
+						.header_menu_link {
+							color: #000;
+						}
+					}
+
+					.header_menu_item::before {
+						content: "";
+						clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						width: 40px;
+						height: 20px;
+						background-color: rgba(255, 0, 0, 0.5);
+						border-radius: 50%;
+						opacity: 0;
+						z-index: -1;
+						/* Помещаем позади основного контента */
+						transition: opacity 0.3s ease;
+					}
+
+					.header_menu_item:hover::before {
+						opacity: 1;
+					}
+				}
+
+			}
+		}
+
+
+
+		.header_addinfa {
+			display: flex;
+			align-items: center;
+			position: relative;
+			gap: 45px;
+
+			.header_addinfa_number {
+				a {
+					color: #161616;
+					font-family: 'Gilroy', sans-serif;
+					font-style: normal;
+					font-weight: 500;
+					line-height: normal;
+				}
+
+				a:hover {
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+
+			.header_addinfa_language {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				cursor: pointer;
+
+				.header_choose_language {
+					position: relative;
+
+					z-index: 5;
+
+					.language {
+						cursor: pointer;
+						background-color: transparent;
+						color: #212832;
+						font-family: 'Google Sans', sans-serif;
+						font-size: 17px;
+						font-style: normal;
+						font-weight: 500;
+						line-height: normal;
+					}
+
+				}
+			}
+		}
+
+
+	}
+
+	@media (max-width: 768px) {
+		.header__container {
+			display: flex;
+			justify-content: space-between;
+			position: fixed;
+			width: 100%;
+
+			.header_logo {
+				margin-right: 0;
+				z-index: 11;
+			}
+
+
+			.body_menu {
+				position: fixed;
+				left: 0;
+				top: 70px;
+				width: 100%;
+				height: 30%;
+				background-color: #F4F4F4;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				clip-path: inset(0 0 0 100%);
+
+
+
+				.header_menu {
+					display: flex;
+					justify-content: center;
+
+
+					//display: none;
+					.header_menu_list {
+						display: flex;
+						flex-direction: column;
+						text-align: center;
+						gap: 10px;
+
+						.header_menu_item {
+							font-size: 30px;
+
+							.header_menu_link {
+								color: #212832;
+							}
+						}
+					}
+				}
+			}
+
+			.burger_active {
+				animation: menuout 1s forwards;
+			}
+
+			@keyframes menuout {
+				from {
+					clip-path: inset(0 0 0 100%);
+				}
+
+				// 50% {
+				// 	clip-path: polygon(0 0, 50% 0, 50% 100%, 50% 50%);
+				// }
+
+				to {
+					clip-path: inset(0 0 0 0);
+				}
+			}
+
+			.header_addinfa {
+				gap: 5px;
+				//display: none;
+				flex-wrap: wrap;
+				z-index: 11;
+			}
+
+			.header_burger {
+				position: relative;
+				width: 35px;
+				height: 24px;
+				cursor: pointer;
+				flex-shrink: 0;
+				z-index: 11;
+
+				span,
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: 2px;
+					background-color: #161616;
+				}
+
+				span {
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+				&::before {
+					width: 50%;
+					right: 0;
+					top: 0;
+				}
+
+				&::after {
+					bottom: 0;
+					width: 50%;
+				}
+
+			}
+
+			.header_burger:active {
+				transition: all 0.5s ease-in-out;
+
+				&::before {
+					width: 50%;
+					left: 0;
+					top: 0;
+					transition: all 0.5s ease-in-out;
+				}
+
+				&::after {
+					bottom: 0;
+					width: 50%;
+					right: 0;
+					transition: all 0.5s ease-in-out;
+				}
+			}
+		}
+
+
+		.header__container::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+			z-index: 10;
+		}
+
+
+	}
+
+}
